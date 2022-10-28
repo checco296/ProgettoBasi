@@ -7,3 +7,56 @@ I piloti vengono assunti dai vari team a inizio stagione ogni scuderia ha 2 pilo
 I Team sono un numero variabile, ogni team compete con 2 vetture, è guidato da un team principal ed appartiene ad una determinata nazione
 Ogni anno il pilota che conclude le gare del calendario con più punti si aggiudica il titolo di campione del mondo piloti
 Ogni anno il team che conclude le gare del calendario con più punti si aggiudica il titolo di campione del campionato mondiale dei costruttori
+
+
+
+
+weekend:
+-dove
+-anno
+-classifica libere (libere 1-2-3) (tabella assestante penso)
+-classifica qualifiche (1-2-3) (tabella assestante penso)
+-soste e gomme (idem)
+-dnf
+-giro veloce
+-arrivo e punteggio (idem)
+
+
++weekend costituiscono una stagione
+
+stagione:
+-anno
+-piste
+-classifica piloti
+-classifica costruttori
+
+
+pilota:
+-nome
+-cognome
+-data nascita
+-nazionalità
+-gp vinti
+-punti in carriera
+-volte sul podio
+-giri veloci
+-mondiali vinti
+
+scuderia:
+-nome
+-sponsor
+-nazione
+-piloti
+-riserve
+-giri veloci
+-mondiali costruttori vinti
+
+auto:
+-nome
+-scuderia
+-anno
+-potenza
+-vittorie
+-dnf
+
+
