@@ -60,3 +60,16 @@ auto:
 -dnf
 
 
+biglietti venduti
+-uomo
+-donna ? really?
+-bambini 
+-prezzo uomo
+-prezzo donna?
+-prezzo bambini
+
+ ----------------------------------------------------------------------
+
+
+Campionato:
+-Anno
