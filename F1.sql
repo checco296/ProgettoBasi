@@ -120,3 +120,6 @@ CREATE TABLE giro_veloce(
 );
 
 -- i punteggi, il punto bonus per giro veloce, la classifica e la composizione delle squadre in linea di massima penso che posso ricavarla.
+
+
+-- https://it.wikipedia.org/wiki/Motori_di_Formula_1
