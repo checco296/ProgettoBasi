@@ -11,19 +11,9 @@ CREATE TABLE circuito(
 CREATE TABLE squadra(
     nome varchar(20) NOT NULL,
     nazione varchar(2) NOT NULL,
+    nome_precedente varchar(20) NOT NULL,
     PRIMARY KEY(nome)
 );
-
-CREATE TABLE motore( --non so se serva
-    nome varchar(20) NOT NULL,
-    nazione varchar(2) NOT NULL,
-    PRIMARY KEY(nome)
-);
-
-CREATE TABLE nazione( --non so se serve
-    nome varchar(20) NOT NULL,
-    PRIMARY KEY(nome)
-)
 
 CREATE TABLE pilota(
     nome varchar(20) NOT NULL,
@@ -37,12 +27,19 @@ CREATE TABLE pilota(
     PRIMARY KEY(nome,cognome,anno_nascita)
 );
 
+CREATE TABLE motore( --non so se serva
+    nome varchar(20) NOT NULL,
+    nazione varchar(2) NOT NULL,
+    cilindrata int NOT NULL,
+    tipologia VARCHAR(20),
+    PRIMARY KEY(nome)
+);
+
 CREATE TABLE pneumatico(
     nome varchar(20) NOT NULL,
     nazione varchar(2) NOT NULL,
     PRIMARY KEY(nome)
 );
-
 
 -- STAGIONE
 
@@ -53,48 +50,32 @@ CREATE TABLE calendario(
     PRIMARY KEY(anno,gara_num)
 );
 
-CREATE TABLE pilota_del_giorno(
+CREATE TABLE partecipante(
     anno int NOT NULL,
-    gara_num int NOT NULL, --da vedere se va bene
-    nome varchar(20), --non metto NOT NULL per casi come il belgio
-    cognome varchar(20),
-    numero_in_gara int, --forse non serve
-    percentuale int,
-    PRIMARY KEY(/*da definire*/)
+    numero_in_gara int NOT NULL,
+    squadra VARCHAR(20) NOT NULL,
+    vettura VARCHAR(20) NOT NULL,
+    PRIMARY KEY(anno,numero_in_gara)
 );
 
-CREATE TABLE giro_veloce(
+CREATE TABLE autovetture(
     anno int NOT NULL,
-    gara_num int NOT NULL,
-    nome varchar(20), --da definire se ci va NOT NULL
-    cognome varchar(20),
-    numero_in_gara int, --forse non serve
-    tempo int,
-    PRIMARY KEY(/*da definire*/)
+    squadra varchar(20) NOT NULL,
+    motore varchar(20) NOT NULL,
+    pneumatico varchar(20) NOT NULL,
+    PRIMARY KEY(anno,squadra)
 );
 
-CREATE TABLE prove_libere_1( --vedere se tenerla o se compattarlo in una
+CREATE TABLE prove_libere( --vedere se tenerla o se compattarlo in una
     anno int NOT NULL,
     gara_num int NOT NULL,
     numero_in_gara int, --da verificare
-    posizione int, --da verificare
-    tempo int,
-);
-
-CREATE TABLE prove_libere_2( --vedere se tenerla
-    anno int NOT NULL,
-    gara_num int NOT NULL,
-    numero_in_gara int, --da verificare
-    posizione int, --da verificare
-    tempo int,
-);
-
-CREATE TABLE prove_libere_3( --vedere se tenerla
-    anno int NOT NULL,
-    gara_num int NOT NULL,
-    numero_in_gara int, --da verificare
-    posizione int, --da verificare
-    tempo int,
+    posizione_fp1 int, --da verificare
+    tempo_fp1 int,
+    posizione_fp2 int, --da verificare
+    tempo_fp2 int,
+    posizione_fp3 int, --da verificare
+    tempo_fp3 int,
 );
 
 CREATE TABLE qualifiche(
@@ -116,6 +97,26 @@ CREATE TABLE gara(
     penalita_partenza int NOT NULL,
     punti int NOT NULL, --da rivedere penso non serva perchè il sistema è sempre quello fatta eccezioni i casi di gara finita troppo presto
     ritiro int NOT NULL,
+);
+
+CREATE TABLE pilota_del_giorno(
+    anno int NOT NULL,
+    gara_num int NOT NULL, --da vedere se va bene
+    nome varchar(20), --non metto NOT NULL per casi come il belgio
+    cognome varchar(20),
+    numero_in_gara int, --forse non serve
+    percentuale int,
+    PRIMARY KEY(/*da definire*/)
+);
+
+CREATE TABLE giro_veloce(
+    anno int NOT NULL,
+    gara_num int NOT NULL,
+    nome varchar(20), --da definire se ci va NOT NULL
+    cognome varchar(20),
+    numero_in_gara int, --forse non serve
+    tempo int,
+    PRIMARY KEY(/*da definire*/)
 );
 
 -- i punteggi, il punto bonus per giro veloce, la classifica e la composizione delle squadre in linea di massima penso che posso ricavarla.
