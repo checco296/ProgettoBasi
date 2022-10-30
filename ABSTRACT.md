@@ -34,6 +34,7 @@ stagione:
 pilota:
 -nome
 -cognome
+-sesso
 -data nascita
 -nazionalità
 -gp vinti
