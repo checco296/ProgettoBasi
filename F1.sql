@@ -24,7 +24,7 @@ CREATE TABLE pilota(
     anno_morte int,    --dipende da che anno inizio!
     numero_in_gara int NOT NULL,
     sigla_in_gara varchar(3) NOT NULL,
-    PRIMARY KEY(nome,cognome,anno_nascita)
+    PRIMARY KEY(sigla_in_gara,numero_in_gara)
 );
 
 CREATE TABLE motore( --non so se serva
@@ -102,8 +102,6 @@ CREATE TABLE gara(
 CREATE TABLE pilota_del_giorno(
     anno int NOT NULL,
     gara_num int NOT NULL, --da vedere se va bene
-    nome varchar(20), --non metto NOT NULL per casi come il belgio
-    cognome varchar(20),
     numero_in_gara int, --forse non serve
     percentuale int,
     PRIMARY KEY(/*da definire*/)
@@ -112,8 +110,6 @@ CREATE TABLE pilota_del_giorno(
 CREATE TABLE giro_veloce(
     anno int NOT NULL,
     gara_num int NOT NULL,
-    nome varchar(20), --da definire se ci va NOT NULL
-    cognome varchar(20),
     numero_in_gara int, --forse non serve
     tempo int,
     PRIMARY KEY(/*da definire*/)
