@@ -1,3 +1,6 @@
+/*dal 2014 ogni pilota è associato anche ad un numero, prima 
+non lo avevano, i piloti che hanno corso prima verrà assegnato 
+il valore 100 per motivi logistici*/
 INSERT INTO pilota(nome,cognome,sesso,nazionalita,anno_nascita,anno_morte,numero_in_gara,sigla_in_gara) VALUES
 ('Lewis','Hamilton','M','UK',1985,NULL,44,'HAM'),
 ('George','Russell','M','UK',1998,NULL,63,'RUS'),
@@ -41,5 +44,73 @@ INSERT INTO pilota(nome,cognome,sesso,nazionalita,anno_nascita,anno_morte,numero
 ('Roberto','Merhi','M','ES',1991,NULL,98,'MER'),
 ('Will','Stevens','M','UK',1991,NULL,28,'STE'),
 ('Pastor','Maldonado','M','VE',1985,NULL,13,'MAL'); /*2015*/
-/*('','','M','',,NULL,,''),
-('','','M','',,NULL,,''),*/
+('Alexander','Rossi','M','US',1991,NULL,53,'RSI'),
+('Jean-Eric','Vergne','M','FR',1990,NULL,25,'VER'),
+('Jules','Bianchi','M','FR',1989,2015,17,'BIA'),
+('Adrian','Sutil','M','DE',1983,NULL,20,'SUT'),
+('Max','Chilton','M','UK',1991,NULL,23,'CHI'),
+('Kamui','Kobayashi','M','JP',1986,NULL,10,'KOB'),
+('Mark','Webber','M','AU',1976,NULL,14,'WEB'),
+('Paul','Di Resta','M','UK',1986,NULL,40,'DIR'),
+('Charles','Pic','M','FR',1990,NULL,100,'PIC'),
+('Heikki','Kovalainen','M','FI',1981,NULL,101,'KOV'),
+('Giedo','Van der Garde','M','NL',1985,NULL,102,'VDG'),
+('Bruno','Senna','M','BR',1983,NULL,103,'SEN'),
+('Vitaly','Petrov','M','RU',1984,NULL,104,'PET'),
+('Timo','Glock','M','DE',1982,NULL,105,'GLO'),
+('Jérôme','DAmbrosio','M','BE',1985,NULL,106,'DAM'),
+('Narain','Karthikeyan','M','IN',1977,NULL,107,'KAR'),
+('Pedro','De la Rosa','M','ES',1971,NULL,108,'DLR'),
+('Michael','Schumacher','M','DE',1969,NULL,109,'MSC'),
+('Nick','Heidfeld','M','DE',1977,NULL,110,'HEI'),
+('Jaime','Alguersuari','M','ES',1990,NULL,111,'ALG'),
+('Sébastien','Buemi','M','CH',1988,NULL,112,'BUE'),
+('Rubens','Barrichello','M','BR',1972,NULL,113,'BAR'),
+('Jarno','Trulli','M','IT',1974,NULL,114,'TRU'),
+('Vitantonio','Liuzzi','M','IT',1980,NULL,115,'LIU'),
+('Karun','Chandhok','M','IN',1984,NULL,116,'CHD'),
+('Lucas','Di Grassi','M','BR',1984,NULL,117,'DIG'),
+('Naoki','Yamamoto','M','JP',1988,NULL,118,'YAM'),
+('Christian','Klien','M','AT',1983,NULL,119,'KLI'),
+('Sébastien','Bourdais','M','FR',1979,NULL,120,'BOU'),
+('Kazuki','Nakajima','M','JP',1985,NULL,121,'NAK'),
+('Nelson','Piquet Jr.','M','BR',1985,NULL,122,'PIQ'),
+('Luca','Badoer','M','IT',1971,NULL,123,'BAD'),
+('David','Coulthard','M','UK',1971,NULL,124,'COU'),
+('Giancarlo','Fisichella','M','IT',1973,NULL,125,'FIS'),
+('Takuma','Sato','M','JP',1977,NULL,126,'SAT'),
+('Anthony','Davidson','M','UK',1979,NULL,127,'DAV'),
+('Alexander','Wurz','M','AT',1974,NULL,128,'WUR'),
+('Ralf','Schumacher','M','DE',1975,NULL,129,'RSC'),
+('Scott','Speed','M','US',1983,NULL,130,'SPE'),
+('Sakon','Yamamoto','M','JP',1982,NULL,131,'YAM'),
+('Christijan','Albers','M','NL',1979,NULL,132,'ALB'),
+('Juan Pablo','Montoya','M','CO',1975,NULL,133,'MOY'),
+('Jacques','Villeneuve','M','CA',1971,NULL,134,'VIL'),
+('Tiago','Monteiro','M','PT',1976,NULL,135,'MON'),
+('Robert','Doornbos','M','NL',1981,NULL,136,'DOO'),
+('Yuji','Ide','M','JP',1975,NULL,137,'IDE'),
+('Franck','Montagny','M','FR',1978,NULL,138,'MON'),
+('Patrick','Friesacher','M','AT',1980,NULL,139,'FRI'),
+('Antônio','Pizzonia','M','BR',1980,NULL,140,'PIZ'),
+('Olivier','Panis','M','FR',1966,NULL,141,'PAN'),
+('Cristiano','Da Matta','M','BR',1973,NULL,142,'DAM'),
+('Zsolt','Baumgartner','M','HU',1981,NULL,143,'BAU'),
+('Ricardo','Zonta','M','BR',1976,NULL,144,'ZON'),
+('Marc','Gené','M','ES',,NULL,145,'GEN'),
+('Giorgio','Pantano','M','IT',1979,NULL,146,'PAN'),
+('Gianmaria','Bruni','M','IT',1981,NULL,147,'BRU'), /*2004*/
+
+
+
+
+('Maria Teresa','De Filippis','F','IT',1926,2016,148,'DEF'),/*donne*/
+('Lella','Lombardi','F','IT',1941,1992,149,'LOM'),
+('Divina','Galica','F','UK',1944,NULL,150,'GAL'),
+('Desiré','Wilson','F','ZA',1953,NULL,151,'WIL'),
+('Giovanna','Amati','F','IT',1959,NULL,152,'AMA'),
+
+('Ayrton','Senna','M','BR',1960,1994,153,'SEN'),/*migliori morti*/
+('Niki','Lauda','M','AT',1949,2019,154,'LAU'),
+('Roland','Ratzenberger','M','AT',1960,1994,154,'RAT'),
+('Nino','Farina','M','IT',1906,1966,155,'FAR'),

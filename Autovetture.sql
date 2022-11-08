@@ -219,7 +219,7 @@ INSERT INTO autovetture(anno,nome,squadra,motore,pneumatico) VALUES
 (2004,'Sauber C23','Sauber_1','Petronas 04A','Bridgestone'),
 (2004,'Toyota TF104','Toyota','Toyota RVX-04','Michelin'),
 (2004,'Williams FW26','Williams','BMW P84','Michelin'),
-
+/*
 (2003,'','','','Pirelli'),
 (2003,'','','','Pirelli'),
 (2003,'','','','Pirelli'),
@@ -285,3 +285,4 @@ INSERT INTO autovetture(anno,nome,squadra,motore,pneumatico) VALUES
 (1998,'','','','Pirelli'),
 (1998,'','','','Pirelli'),
 (1998,'','','','Pirelli'),
+*/

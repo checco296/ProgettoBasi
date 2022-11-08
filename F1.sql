@@ -21,7 +21,7 @@ CREATE TABLE pilota(
     sesso varchar(1) NOT NULL,
     nazionalita varchar(2) NOT NULL,
     anno_nascita int NOT NULL,
-    anno_morte int,    --dipende da che anno inizio!
+    anno_morte int,
     numero_in_gara int NOT NULL,
     sigla_in_gara varchar(3) NOT NULL,
     PRIMARY KEY(sigla_in_gara,numero_in_gara)
