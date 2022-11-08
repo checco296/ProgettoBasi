@@ -27,7 +27,7 @@ CREATE TABLE pilota(
     PRIMARY KEY(sigla_in_gara,numero_in_gara)
 );
 
-CREATE TABLE motore( --non so se serva
+CREATE TABLE motore(
     nome varchar(20) NOT NULL,
     nazione varchar(2) NOT NULL,
     cilindrata int NOT NULL,
@@ -60,6 +60,7 @@ CREATE TABLE partecipante(
 
 CREATE TABLE autovetture(
     anno int NOT NULL,
+    nome varchar(20) NOT NULL,
     squadra varchar(20) NOT NULL,
     motore varchar(20) NOT NULL,
     pneumatico varchar(20) NOT NULL,
