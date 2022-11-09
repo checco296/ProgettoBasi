@@ -22,6 +22,7 @@ INSERT INTO pilota(nome,cognome,sesso,nazionalita,anno_nascita,anno_morte,numero
 ('Valtteri','Bottas','M','FI',1989,NULL,77,'BOT'),
 ('Kevin','Magnussen','M','DK',1992,NULL,20,'MAG'),
 ('Mick','Schumacher','M','DE',1999,NULL,47,'MSC'),
+
 ('Kimi','Räikkönen','M','FI',1979,NULL,7,'RAI'),
 ('Antonio','Giovinazzi','M','IT',1993,NULL,99,'GIO'),
 ('Nikita','Mazepin','M','RU',1999,NULL,9,'MAZ'),

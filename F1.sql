@@ -51,11 +51,10 @@ CREATE TABLE calendario(
 );
 
 CREATE TABLE partecipante(
-    anno int NOT NULL,
+    sigla_in_gara varchar(3) NOT NULL,
     numero_in_gara int NOT NULL,
-    squadra VARCHAR(20) NOT NULL,
     vettura VARCHAR(20) NOT NULL,
-    PRIMARY KEY(anno,numero_in_gara)
+    PRIMARY KEY(sigla_in_gara,vettura)
 );
 
 CREATE TABLE autovetture(
