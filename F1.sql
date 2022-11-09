@@ -66,43 +66,31 @@ CREATE TABLE autovetture(
     PRIMARY KEY(anno,squadra)
 );
 
-CREATE TABLE prove_libere( --vedere se tenerla o se compattarlo in una
+CREATE TABLE weekend_di_gara(
     anno int NOT NULL,
     gara_num int NOT NULL,
-    numero_in_gara int, --da verificare
+    sigla_in_gara varchar(3) NOT NULL,
+    numero_in_gara int NOT NULL,
     posizione_fp1 int, --da verificare
     tempo_fp1 int,
     posizione_fp2 int, --da verificare
     tempo_fp2 int,
     posizione_fp3 int, --da verificare
     tempo_fp3 int,
-);
-
-CREATE TABLE qualifiche(
-    anno int NOT NULL,
-    gara_num int NOT NULL,
-    numero_in_gara int,
     posizione int NOT NULL,
     tempo_q1 int,
     tempo_q2 int,
     tempo_q3 int,
-    PRIMARY KEY(anno,gara_num,numero_in_gara)
-);
-
-CREATE TABLE gara(
-    anno int NOT NULL,
-    gara_num INT NOT NULL,
-    numero_in_gara int,
     posizione_arrivo int NOT NULL,
     penalita_partenza int NOT NULL,
     punti int NOT NULL, --da rivedere penso non serva perchè il sistema è sempre quello fatta eccezioni i casi di gara finita troppo presto
     ritiro int NOT NULL,
 );
 
-CREATE TABLE pilota_del_giorno(
+CREATE TABLE pilota_del_giorno(  --vedere se fare il merge anche di questi due
     anno int NOT NULL,
-    gara_num int NOT NULL, --da vedere se va bene
-    numero_in_gara int, --forse non serve
+    gara_num int NOT NULL, 
+    numero_in_gara int, 
     percentuale int,
     PRIMARY KEY(/*da definire*/)
 );
@@ -110,7 +98,7 @@ CREATE TABLE pilota_del_giorno(
 CREATE TABLE giro_veloce(
     anno int NOT NULL,
     gara_num int NOT NULL,
-    numero_in_gara int, --forse non serve
+    numero_in_gara int, 
     tempo int,
     PRIMARY KEY(/*da definire*/)
 );
