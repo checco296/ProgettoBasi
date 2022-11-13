@@ -1,4 +1,15 @@
 -- da aggiungere le chiavi interne ed esterne e modificare eventuali parametri ridondanti
+DROP TABLE IF EXISTS circuito;
+DROP TABLE IF EXISTS squadra;
+DROP TABLE IF EXISTS pilota;
+DROP TABLE IF EXISTS motore;
+DROP TABLE IF EXISTS pneumatico;
+DROP TABLE IF EXISTS calendario;
+DROP TABLE IF EXISTS partecipante;
+DROP TABLE IF EXISTS autovetture;
+DROP TABLE IF EXISTS weekend_di_gara;
+DROP TABLE IF EXISTS pilota_del_giorno;
+DROP TABLE IF EXISTS giro_veloce;
 
 CREATE TABLE circuito(
     nome varchar(20) NOT NULL,
@@ -71,18 +82,13 @@ CREATE TABLE weekend_di_gara(
     gara_num int NOT NULL,
     sigla_in_gara varchar(3) NOT NULL,
     numero_in_gara int NOT NULL,
-    posizione_fp1 int, --da verificare
-    tempo_fp1 int,
-    posizione_fp2 int, --da verificare
-    tempo_fp2 int,
-    posizione_fp3 int, --da verificare
-    tempo_fp3 int,
-    posizione int NOT NULL,
+    miglior_tempo_fp time,
     tempo_q1 int,
     tempo_q2 int,
     tempo_q3 int,
-    posizione_arrivo int NOT NULL,
+    posizione_partenza int NOT NULL, --vedere se serve casomai lo tengo momentaneamente come test
     penalita_partenza int NOT NULL,
+    posizione_arrivo int NOT NULL,
     punti int NOT NULL, --da rivedere penso non serva perchè il sistema è sempre quello fatta eccezioni i casi di gara finita troppo presto
     ritiro int NOT NULL,
 );
@@ -107,3 +113,12 @@ CREATE TABLE giro_veloce(
 
 
 -- https://it.wikipedia.org/wiki/Motori_di_Formula_1
+
+/*drop table if exists "tempistiche";
+create table tempistiche (tempo time);
+
+insert into tempistiche(tempo)
+values ('04:30.457');
+        
+select * from scientist
+where tempo < '04:30.456';*/

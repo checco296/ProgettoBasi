@@ -114,4 +114,4 @@ INSERT INTO pilota(nome,cognome,sesso,nazionalita,anno_nascita,anno_morte,numero
 ('Ayrton','Senna','M','BR',1960,1994,153,'SEN'),/*migliori morti*/
 ('Niki','Lauda','M','AT',1949,2019,154,'LAU'),
 ('Roland','Ratzenberger','M','AT',1960,1994,154,'RAT'),
-('Nino','Farina','M','IT',1906,1966,155,'FAR'),
+('Nino','Farina','M','IT',1906,1966,155,'FAR');

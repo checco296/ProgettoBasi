@@ -269,7 +269,7 @@ INSERT INTO calendario(anno,gara_num,nome_gara) VALUES
 (2010,16,'Suzuka'),
 (2010,17,'Yeongam'),
 (2010,18,'Interlagos'),
-(2010,19,'Yas Marina'),
+(2010,19,'Yas Marina');
 
 /*
 (20, 1,''),

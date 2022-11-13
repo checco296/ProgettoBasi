@@ -217,7 +217,7 @@ INSERT INTO partecipante(anno,numero_in_gara,vettura) VALUES
 ('',,'BMW Sauber F1.08'),
 ('',,'BMW Sauber F1.09'),
 ('',,'Renault R30'),
-('',,'Williams FW42'), 
+('',,'Williams FW42'); 
 /* 2019
 ('',,''),
 ('',,''),

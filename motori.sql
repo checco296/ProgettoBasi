@@ -94,4 +94,4 @@ INSERT INTO motore(nome,nazione,cilindrata,tipologia) VALUES
 ('Toyota RVX-07','JP',2.4,'V8'),
 ('Toyota RVX-06','JP',2.4,'V8'),
 ('Toyota RVX-05','JP',3.0,'V10'),
-('Toyota RVX-04','JP',3.0,'V10'),
+('Toyota RVX-04','JP',3.0,'V10');
