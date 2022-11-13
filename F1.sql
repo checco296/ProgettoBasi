@@ -82,31 +82,17 @@ CREATE TABLE weekend_di_gara(
     gara_num int NOT NULL,
     sigla_in_gara varchar(3) NOT NULL,
     numero_in_gara int NOT NULL,
-    miglior_tempo_fp time,
+    --miglior_tempo_fp time,
     tempo_q1 int,
     tempo_q2 int,
     tempo_q3 int,
-    posizione_partenza int NOT NULL, --vedere se serve casomai lo tengo momentaneamente come test
-    penalita_partenza int NOT NULL,
+    --posizione_partenza int NOT NULL, --vedere se serve casomai lo tengo momentaneamente come test
+    --penalita_partenza int NOT NULL,
     posizione_arrivo int NOT NULL,
     punti int NOT NULL, --da rivedere penso non serva perchè il sistema è sempre quello fatta eccezioni i casi di gara finita troppo presto
-    ritiro int NOT NULL,
-);
-
-CREATE TABLE pilota_del_giorno(  --vedere se fare il merge anche di questi due
-    anno int NOT NULL,
-    gara_num int NOT NULL, 
-    numero_in_gara int, 
-    percentuale int,
-    PRIMARY KEY(/*da definire*/)
-);
-
-CREATE TABLE giro_veloce(
-    anno int NOT NULL,
-    gara_num int NOT NULL,
-    numero_in_gara int, 
-    tempo int,
-    PRIMARY KEY(/*da definire*/)
+    ritiro varchar(1) NOT NULL,
+    pilota_del_giorno varchar(1) NOT NULL,
+    giro_veloce int
 );
 
 -- i punteggi, il punto bonus per giro veloce, la classifica e la composizione delle squadre in linea di massima penso che posso ricavarla.
