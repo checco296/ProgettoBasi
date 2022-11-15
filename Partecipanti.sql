@@ -214,10 +214,10 @@ INSERT INTO partecipante(anno,numero_in_gara,vettura) VALUES
 ('GRO',8,'Haas VF-20'),
 
 ('KUB',88,'BMW Sauber F1.07'),
-('',,'BMW Sauber F1.08'),
-('',,'BMW Sauber F1.09'),
-('',,'Renault R30'),
-('',,'Williams FW42'); 
+('KUB',88,'BMW Sauber F1.08'),
+('KUB',88,'BMW Sauber F1.09'),
+('KUB',88,'Renault R30'),
+('KUB',88,'Williams FW42'); 
 /* 2019
 ('',,''),
 ('',,''),
