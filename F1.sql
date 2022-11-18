@@ -82,23 +82,16 @@ CREATE TABLE weekend_di_gara(
     gara_num int NOT NULL,
     sigla_in_gara varchar(3) NOT NULL,
     numero_in_gara int NOT NULL,
-    --miglior_tempo_fp time,
     tempo_q1 int,
     tempo_q2 int,
     tempo_q3 int,
-    --posizione_partenza int NOT NULL, --vedere se serve casomai lo tengo momentaneamente come test
-    --penalita_partenza int NOT NULL,
     posizione_arrivo int NOT NULL,
-    punti int NOT NULL, --da rivedere penso non serva perchè il sistema è sempre quello fatta eccezioni i casi di gara finita troppo presto
     ritiro varchar(1) NOT NULL,
     pilota_del_giorno varchar(1) NOT NULL,
     giro_veloce int
 );
 
 -- i punteggi, il punto bonus per giro veloce, la classifica e la composizione delle squadre in linea di massima penso che posso ricavarla.
-
-
--- https://it.wikipedia.org/wiki/Motori_di_Formula_1
 
 /*drop table if exists "tempistiche";
 create table tempistiche (tempo time);
