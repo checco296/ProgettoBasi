@@ -1281,4 +1281,4 @@ INSERT INTO weekend_di_gara(anno,gara_num,sigla_in_gara,numero_in_gara,tempo_q1,
 (2020,17,'MAG',20,'1:37.863',NULL      ,NULL      ,18,'N','N',NULL),
 (2020,17,'GRO', 8,'1:38.173',NULL      ,NULL      ,19,'N','N',NULL),
 (2020,17,'RUS',63,'1:38.045',NULL      ,NULL      ,15,'N','N',NULL),
-(2020,17,'LAT', 6,'1:38.443',NULL      ,NULL      ,17,'N','N',NULL),
+(2020,17,'LAT', 6,'1:38.443',NULL      ,NULL      ,17,'N','N',NULL);
