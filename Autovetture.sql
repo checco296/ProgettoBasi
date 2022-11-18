@@ -1,5 +1,5 @@
 INSERT INTO autovetture(anno,nome,squadra,motore,pneumatico) VALUES
-(2022,'Alfa Romeo C42',"Alfa Romeo","Ferrari Tipo 066/7","Pirelli"),
+(2022,'Alfa Romeo C42','Alfa Romeo','Ferrari Tipo 066/7','Pirelli'),
 (2022,'AlphaTauri AT03','AlphaTauri','Red Bull RBPTH001','Pirelli'),
 (2022,'Alpine A522','Alpine','Renault E-Tech RE22','Pirelli'),
 (2022,'Aston Martin AMR22','Aston Martin','Mercedes-AMG F1 M13 E Performance','Pirelli'),
@@ -19,7 +19,7 @@ INSERT INTO autovetture(anno,nome,squadra,motore,pneumatico) VALUES
 (2021,'McLaren MCL35M','McLaren','Mercedes-AMG F1 M12 E Performance','Pirelli'),
 (2021,'Mercedes-AMG F1 W12 E Performance','Mercedes','Mercedes-AMG F1 M12 E Performance','Pirelli'),
 (2021,'Red Bull RB16B','Red Bull','Honda RA621H','Pirelli'),
-(2021,'Williams FW43B','Williams','Mercedes','Mercedes-AMG F1 M12 E Performance','Pirelli'),
+(2021,'Williams FW43B','Williams','Mercedes-AMG F1 M12 E Performance','Pirelli'),
 
 (2020,'Alfa Romeo Racing C39','Alfa Romeo','Ferrari Tipo 065','Pirelli'),
 (2020,'AlphaTauri AT01','AlphaTauri','Honda RA620H','Pirelli'),
@@ -27,10 +27,10 @@ INSERT INTO autovetture(anno,nome,squadra,motore,pneumatico) VALUES
 (2020,'Haas VF-20','Haas','Ferrari Tipo 065','Pirelli'),
 (2020,'McLaren MCL35','McLaren','Renault E-TECH 20','Pirelli'),
 (2020,'Mercedes-AMG F1 W11 EQ Performance','Mercedes','Mercedes-AMG F1 M11 EQ Performance','Pirelli'),
-(2020,'Racing Point RP20','Racing Point','Mercedes','Mercedes-AMG F1 M11 EQ Performance','Pirelli'),
+(2020,'Racing Point RP20','Racing Point','Mercedes-AMG F1 M11 EQ Performance','Pirelli'),
 (2020,'Red Bull RB16','Red Bull','Honda RA620H','Pirelli'),
 (2020,'Renault R.S.20','Renault','Renault E-TECH 20','Pirelli'),
-(2020,'Williams FW43','Williams','Mercedes','Mercedes-AMG F1 M11 EQ Performance','Pirelli'),
+(2020,'Williams FW43','Williams','Mercedes-AMG F1 M11 EQ Performance','Pirelli'),
 
 (2019,'Alfa Romeo Racing C38','Alfa Romeo','Ferrari Tipo 064','Pirelli'),
 (2019,'Ferrari SF90','Ferrari','Ferrari Tipo 064','Pirelli'),
@@ -41,7 +41,7 @@ INSERT INTO autovetture(anno,nome,squadra,motore,pneumatico) VALUES
 (2019,'Red Bull RB15','Red Bull','Honda RA619H','Pirelli'),
 (2019,'Renault R.S.19','Renault','Renault E-TECH 19','Pirelli'),
 (2019,'Toro Rosso STR14','Toro Rosso','Honda RA619H','Pirelli'),
-(2019,'Williams FW42','Williams','Mercedes','Mercedes-AMG F1 M10 EQ Power+','Pirelli'),
+(2019,'Williams FW42','Williams','Mercedes-AMG F1 M10 EQ Power+','Pirelli'),
 
 (2018,'Ferrari SF71H','Ferrari','Ferrari Tipo 063','Pirelli'),
 (2018,'Force India VJM11','Force India','Mercedes-AMG F1 M09 EQ Power+','Pirelli'),
@@ -52,7 +52,7 @@ INSERT INTO autovetture(anno,nome,squadra,motore,pneumatico) VALUES
 (2018,'Renault R.S.18','Renault','Renault R.E.18','Pirelli'),
 (2018,'Sauber C37','Sauber_2','Ferrari Tipo 063','Pirelli'),
 (2018,'Toro Rosso STR13','Toro Rosso','Honda RA618H','Pirelli'),
-(2018,'Williams FW41','Williams','Mercedes','Mercedes-AMG F1 M09 EQ Power+','Pirelli'),
+(2018,'Williams FW41','Williams','Mercedes-AMG F1 M09 EQ Power+','Pirelli'),
 
 (2017,'Ferrari SF70H','Ferrari','Ferrari Tipo 062','Pirelli'),
 (2017,'Force India VJM10','Force India','Mercedes-AMG F1 M08 EQ Power+','Pirelli'),
@@ -63,7 +63,7 @@ INSERT INTO autovetture(anno,nome,squadra,motore,pneumatico) VALUES
 (2017,'Renault R.S.17','Renault','Renault R.E.17','Pirelli'),
 (2017,'Sauber C36','Sauber_2','Ferrari Tipo 062','Pirelli'),
 (2017,'Toro Rosso STR12','Toro Rosso','Renault R.E.17','Pirelli'),
-(2017,'Williams FW40','Williams','Mercedes','Mercedes-AMG F1 M08 EQ Power+','Pirelli'),
+(2017,'Williams FW40','Williams','Mercedes-AMG F1 M08 EQ Power+','Pirelli'),
 
 (2016,'Ferrari SF16-H','Ferrari','Ferrari Tipo 061','Pirelli'),
 (2016,'Force India VJM09','Force India','Mercedes-Benz PU 106C Hybrid','Pirelli'),
@@ -75,7 +75,7 @@ INSERT INTO autovetture(anno,nome,squadra,motore,pneumatico) VALUES
 (2016,'Renault R.S.16','Renault','Renault R.E.16','Pirelli'),
 (2016,'Sauber C35','Sauber_2','Ferrari Tipo 061','Pirelli'),
 (2016,'Toro Rosso STR11','Toro Rosso','Ferrari Tipo 061','Pirelli'),
-(2016,'Williams FW38','Williams','Mercedes','Mercedes-Benz PU 106C Hybrid','Pirelli'),
+(2016,'Williams FW38','Williams','Mercedes-Benz PU 106C Hybrid','Pirelli'),
 
 (2015,'Ferrari SF15-T','Ferrari','Ferrari Tipo 060','Pirelli'),
 (2015,'Force India VJM08','Force India','Mercedes-Benz PU 106A Hybrid','Pirelli'),

@@ -44,7 +44,7 @@ INSERT INTO pilota(nome,cognome,sesso,nazionalita,anno_nascita,anno_morte,numero
 ('Nico','Rosberg','M','DE',1985,NULL,6,'ROS'),
 ('Roberto','Merhi','M','ES',1991,NULL,98,'MER'),
 ('Will','Stevens','M','UK',1991,NULL,28,'STE'),
-('Pastor','Maldonado','M','VE',1985,NULL,13,'MAL'); /*2015*/
+('Pastor','Maldonado','M','VE',1985,NULL,13,'MAL'), /*2015*/
 ('Alexander','Rossi','M','US',1991,NULL,53,'RSI'),
 ('Jean-Eric','Vergne','M','FR',1990,NULL,25,'VER'),
 ('Jules','Bianchi','M','FR',1989,2015,17,'BIA'),
@@ -98,7 +98,7 @@ INSERT INTO pilota(nome,cognome,sesso,nazionalita,anno_nascita,anno_morte,numero
 ('Cristiano','Da Matta','M','BR',1973,NULL,142,'DAM'),
 ('Zsolt','Baumgartner','M','HU',1981,NULL,143,'BAU'),
 ('Ricardo','Zonta','M','BR',1976,NULL,144,'ZON'),
-('Marc','Gené','M','ES',,NULL,145,'GEN'),
+('Marc','Gené','M','ES',1974,NULL,145,'GEN'),
 ('Giorgio','Pantano','M','IT',1979,NULL,146,'PAN'),
 ('Gianmaria','Bruni','M','IT',1981,NULL,147,'BRU'), /*2004*/
 

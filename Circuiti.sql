@@ -31,7 +31,7 @@ INSERT INTO circuito(nome,alias,nazione,lunghezza) VALUES
 ('Istanbul','Istanbul Park','TR',5.34),
 ('Jacarepagua','Autódromo Internacional Nelson Piquet','BR',5.48),
 ('Jarama','Circuito del Jarama','ES',3.85),
-('Jeddah','Jeddah Street Circuit','SA'6.17),
+('Jeddah','Jeddah Street Circuit','SA',6.17),
 ('Jerez','Circuito de Jerez','ES',4.43),
 ('Kyalami','Kyalami Racing Circuit','ZA',4.53),
 ('Long Beach','Long Beach','US',3.17),
