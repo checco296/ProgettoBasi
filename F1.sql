@@ -63,7 +63,7 @@ CREATE TABLE partecipante(
     sigla_in_gara varchar(3) NOT NULL,
     numero_in_gara int NOT NULL,
     vettura VARCHAR(60) NOT NULL,
-    PRIMARY KEY(sigla_in_gara,vettura)
+    PRIMARY KEY(sigla_in_gara,numero_in_gara,vettura)
 );
 
 CREATE TABLE autovetture(
@@ -86,7 +86,8 @@ CREATE TABLE weekend_di_gara(
     posizione_arrivo int NOT NULL,
     ritiro varchar(1) NOT NULL,
     pilota_del_giorno varchar(1) NOT NULL,
-    giro_veloce time
+    giro_veloce time,
+	PRIMARY KEY(anno,gara_num,sigla_in_gara,numero_in_gara)
 );
 
 -- i punteggi, il punto bonus per giro veloce, la classifica e la composizione delle squadre in linea di massima penso che posso ricavarla.

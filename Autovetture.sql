@@ -80,7 +80,7 @@ INSERT INTO autovetture(anno,nome,squadra,motore,pneumatico) VALUES
 (2015,'Ferrari SF15-T','Ferrari','Ferrari Tipo 060','Pirelli'),
 (2015,'Force India VJM08','Force India','Mercedes-Benz PU 106A Hybrid','Pirelli'),
 (2015,'Lotus E23 Hybrid','Lotus','Mercedes-Benz PU 106A Hybrid','Pirelli'),
-(2015,'Marussia MR03','Marussia','Ferrari Tipo 059/3','Pirelli'),
+(2015,'Marussia MR03B','Marussia','Ferrari Tipo 059/3','Pirelli'),
 (2015,'McLaren MP4-30','McLaren','Honda RA615H','Pirelli'),
 (2015,'Mercedes F1 W06 Hybrid','Mercedes','Mercedes-Benz PU 106B Hybrid','Pirelli'),
 (2015,'Red Bull RB11','Red Bull','Renault Energy F1 2015','Pirelli'),
