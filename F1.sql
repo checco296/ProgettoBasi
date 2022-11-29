@@ -20,7 +20,7 @@ CREATE TABLE circuito(
 CREATE TABLE squadra(
     nome varchar(40) NOT NULL,
     nazione varchar(2) NOT NULL,
-    nome_precedente varchar(40) NOT NULL,
+    nome_precedente varchar(40),
     PRIMARY KEY(nome)
 );
 
@@ -28,12 +28,13 @@ CREATE TABLE pilota(
     nome varchar(20) NOT NULL,
     cognome varchar(20) NOT NULL,
     sesso varchar(1) NOT NULL,
+    codice_fiscale varchar(20),/*non serve scrivere not null sulle primary key*/
     nazionalita varchar(2) NOT NULL,
     anno_nascita int NOT NULL,
     anno_morte int,
     numero_in_gara int NOT NULL,
     sigla_in_gara varchar(3) NOT NULL,
-    PRIMARY KEY(sigla_in_gara,numero_in_gara)
+    PRIMARY KEY(codice_fiscale)
 );
 
 CREATE TABLE motore(
@@ -52,22 +53,31 @@ CREATE TABLE pneumatico(
 
 -- STAGIONE
 
-CREATE TABLE calendario(
+/*CREATE TABLE calendario(
     anno int NOT NULL,
     gara_num int NOT NULL,
-    nome_gara varchar(20) NOT NULL,
     PRIMARY KEY(anno,gara_num)
+);*/
+
+CREATE TABLE dove(
+    anno int NOT NULL,
+    gara_num int NOT NULL,
+    circuito varchar(20) NOT NULL,
+    PRIMARY KEY(anno,gara_num,circuito),
+    FOREIGN KEY(anno)     REFERENCES weekend_di_gara(anno),
+    FOREIGN KEY(gara_num) REFERENCES weekend_di_gara(gara_num),
+    FOREIGN KEY(circuito) REFERENCES circuito(nome)
 );
 
-CREATE TABLE partecipante(
+/*CREATE TABLE partecipante(
     sigla_in_gara varchar(3) NOT NULL,
     numero_in_gara int NOT NULL,
     vettura VARCHAR(60) NOT NULL,
     PRIMARY KEY(sigla_in_gara,numero_in_gara,vettura)
-);
+);*/
 
 CREATE TABLE autovetture(
-    anno int NOT NULL,
+    /*anno int NOT NULL,*/
     nome varchar(40) NOT NULL,
     squadra varchar(20) NOT NULL,
     motore varchar(40) NOT NULL,
@@ -78,16 +88,38 @@ CREATE TABLE autovetture(
 CREATE TABLE weekend_di_gara(
     anno int NOT NULL,
     gara_num int NOT NULL,
-    sigla_in_gara varchar(3) NOT NULL,
-    numero_in_gara int NOT NULL,
+    /*sigla_in_gara varchar(3) NOT NULL,
+    numero_in_gara int NOT NULL,*/
+    codice_fiscale varchar(20) NOT NULL,
     tempo_q1 time,
     tempo_q2 time,
     tempo_q3 time,
     posizione_arrivo int NOT NULL,
     ritiro varchar(1) NOT NULL,
-    pilota_del_giorno varchar(1) NOT NULL,
-    giro_veloce time,
-	PRIMARY KEY(anno,gara_num,sigla_in_gara,numero_in_gara)
+    /*pilota_del_giorno varchar(1) NOT NULL,
+    giro_veloce time,*/
+	PRIMARY KEY(anno,gara_num,sigla_in_gara,numero_in_gara),
+    FOREIGN KEY codice_fiscale REFERENCES pilota(codice_fiscale)
+);
+
+CREATE TABLE pilota_del_giorno( /*più scalabile*/
+    anno int NOT NULL,
+    gara_num int NOT NULL,
+    codice_fiscale varchar(20) NOT NULL,
+    PRIMARY KEY(anno,gara_num,codice_fiscale),
+    FOREIGN KEY(anno)     REFERENCES weekend_di_gara(anno),
+    FOREIGN KEY(gara_num) REFERENCES weekend_di_gara(gara_num),
+    FOREIGN KEY codice_fiscale REFERENCES pilota(codice_fiscale)
+);
+
+CREATE TABLE giro_veloce(
+    anno int NOT NULL,
+    gara_num int NOT NULL,
+    codice_fiscale varchar(20) NOT NULL,
+    hot_lap time,
+    FOREIGN KEY(anno)     REFERENCES weekend_di_gara(anno),
+    FOREIGN KEY(gara_num) REFERENCES weekend_di_gara(gara_num),
+    FOREIGN KEY codice_fiscale REFERENCES pilota(codice_fiscale)
 );
 
 -- i punteggi, il punto bonus per giro veloce, la classifica e la composizione delle squadre in linea di massima penso che posso ricavarla.

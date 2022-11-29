@@ -1,5 +1,5 @@
 INSERT INTO squadra(nome,nazione,nome_precedente) VALUES
-('Adams','US','-'),
+('Adams','US','-'),   /*sostituire '-' con NULL*/
 ('AFM','DE','-'),
 ('AGS','FR','-'),
 ('Alfa Romeo','IT','Sauber_2'),

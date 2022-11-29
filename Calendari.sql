@@ -1,4 +1,4 @@
-INSERT INTO calendario(anno,gara_num,nome_gara) VALUES
+INSERT INTO dove(anno,gara_num,circuito) VALUES --da modificare ABCGE CIRCUITI E CREARE DOVE
 (2022, 1,'Bahrain'),
 (2022, 2,'Jeddah'),
 (2022, 3,'Melbourne'),

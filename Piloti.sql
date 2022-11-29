@@ -1,6 +1,7 @@
 /*dal 2014 ogni pilota è associato anche ad un numero, prima 
 non lo avevano, i piloti che hanno corso prima verrà assegnato 
 il valore 100 per motivi logistici*/
+/*inserire codice fiscale*/
 INSERT INTO pilota(nome,cognome,sesso,nazionalita,anno_nascita,anno_morte,numero_in_gara,sigla_in_gara) VALUES
 ('Lewis','Hamilton','M','UK',1985,NULL,44,'HAM'),
 ('George','Russell','M','UK',1998,NULL,63,'RUS'),

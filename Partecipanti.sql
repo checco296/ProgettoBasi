@@ -1,4 +1,4 @@
-INSERT INTO partecipante(sigla_in_gara,numero_in_gara,vettura) VALUES
+INSERT INTO partecipante(sigla_in_gara,numero_in_gara,vettura) VALUES /*sbagliato*/
 ('HAM',44,'Mercedes-AMG F1 W13 E Performance'),
 ('HAM',44,'Mercedes-AMG F1 W12 E Performance'),
 ('HAM',44,'Mercedes-AMG F1 W11 EQ Performance'),
