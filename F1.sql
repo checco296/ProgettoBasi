@@ -71,7 +71,7 @@ CREATE TABLE partecipante(
     FOREIGN KEY(vettura)        REFERENCES autovettura(nome)
 );
 
-CREATE TABLE prestazione( --entità
+CREATE TABLE prestazione( --entità DA AGGIUNGERE VETTURA :(
     anno int,
     gara_num int,
     codice_fiscale varchar(20),
