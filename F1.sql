@@ -37,7 +37,7 @@ CREATE TABLE pilota(
 );
 
 CREATE TABLE motore(
-    nome varchar(40) NOT NULL,
+    nome varchar(40),
     nazione varchar(2) NOT NULL,
     cilindrata int NOT NULL,
     tipologia VARCHAR(20),
@@ -45,7 +45,7 @@ CREATE TABLE motore(
 );
 
 CREATE TABLE pneumatico(
-    nome varchar(20) NOT NULL,
+    nome varchar(20),
     nazione varchar(2) NOT NULL,
     PRIMARY KEY(nome)
 );
@@ -53,7 +53,7 @@ CREATE TABLE pneumatico(
 CREATE TABLE autovettura(
     nome varchar(40),
     squadra varchar(20),
-    --anno int NOT NULL,  spostato in partecipante
+    anno int NOT NULL,
     motore varchar(40) NOT NULL,
     pneumatico varchar(20) NOT NULL,
     PRIMARY KEY(nome,squadra),
@@ -64,16 +64,15 @@ CREATE TABLE autovettura(
 
 CREATE TABLE partecipante(
     codice_fiscale varchar(20),
-    anno int, --spostato da autovettura
-    numero_in_gara int NOT NULL,
     vettura VARCHAR(60),
-    PRIMARY KEY(codice_fiscale,/*vettura*/anno),
+    numero_in_gara int NOT NULL,
+    PRIMARY KEY(codice_fiscale,vettura),
     FOREIGN KEY(codice_fiscale) REFERENCES pilota(codice_fiscale),
     FOREIGN KEY(vettura)        REFERENCES autovettura(nome)
 );
 
 CREATE TABLE prestazione( --entità
-    anno int, --devo prenderlo da gara o da partecipante?
+    anno int,
     gara_num int,
     codice_fiscale varchar(20),
     tempo_q1 time,
@@ -82,7 +81,7 @@ CREATE TABLE prestazione( --entità
     posizione_arrivo int NOT NULL,
     ritiro varchar(1) NOT NULL,
     PRIMARY KEY(anno,gara_num,codice_fiscale),
-    FOREIGN KEY(anno)           REFERENCES partecipante(anno), --oppure gara(anno)? o entrambi
+    FOREIGN KEY(anno)           REFERENCES gara(anno),
     FOREIGN KEY(gara_num)       REFERENCES gara(gara_num),
     FOREIGN KEY(codice_fiscale) REFERENCES partecipante(codice_fiscale)
 );
@@ -99,17 +98,6 @@ CREATE TABLE gara{
     FOREIGN KEY(pilota_veloce) REFERENCES partecipante(codice_fiscale),
     FOREIGN KEY(nome_gara) REFERENCES circuito(nome)
 };
-/*
-CREATE TABLE dove(
-    anno int NOT NULL,
-    gara_num int NOT NULL,
-    circuito varchar(20) NOT NULL,
-    PRIMARY KEY(anno,gara_num,circuito),
-    FOREIGN KEY(anno)     REFERENCES prestazione(anno),
-    FOREIGN KEY(gara_num) REFERENCES prestazione(gara_num),
-    FOREIGN KEY(circuito) REFERENCES circuito(nome)
-);*/
-
 
 -- i punteggi, il punto bonus per giro veloce, la classifica e la composizione delle squadre in linea di massima penso che posso ricavarla.
 
