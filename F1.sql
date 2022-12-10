@@ -4,10 +4,10 @@ DROP TABLE IF EXISTS squadra;
 DROP TABLE IF EXISTS pilota;
 DROP TABLE IF EXISTS motore;
 DROP TABLE IF EXISTS pneumatico;
-DROP TABLE IF EXISTS calendario;
+DROP TABLE IF EXISTS prestazione;
 DROP TABLE IF EXISTS partecipante;
-DROP TABLE IF EXISTS autovetture;
-DROP TABLE IF EXISTS weekend_di_gara;
+DROP TABLE IF EXISTS autovettura;
+DROP TABLE IF EXISTS gara;
 
 CREATE TABLE circuito(
     nome varchar(60),
