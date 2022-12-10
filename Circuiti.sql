@@ -60,6 +60,7 @@ INSERT INTO circuito(nome,alias,nazione,lunghezza) VALUES
 ('Reims-Gueux','Reims-Gueux','FR',7.82),
 ('Riverside','Riverside International Raceway','US',5.27),
 ('Rouen-Les-Essarts',' Rouen-Les-Essarts','FR',6.54),
+('Sakhiir','Bahrain International Circuit alternative','BH',3.54),
 ('Sebring','Sebring International Raceway','US',6.02),
 ('Sepang','Sepang International Circuit','MY',5.54),
 ('Shanghai','Shanghai International Circuit','CN',5.45),
