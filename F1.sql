@@ -51,41 +51,43 @@ CREATE TABLE pneumatico(
 
 CREATE TABLE autovettura(
     nome varchar(40),
-    squadra varchar(20),
+    squadra varchar(40),
     anno int NOT NULL,
     motore varchar(40) NOT NULL,
     pneumatico varchar(20) NOT NULL,
     PRIMARY KEY(nome,squadra),
-    FOREIGN KEY(squadra)    REFERENCES squadra(nome),
-    FOREIGN KEY(motore)     REFERENCES motore(nome),
-    FOREIGN KEY(pneumatico) REFERENCES pneumatico(nome)
+    FOREIGN KEY(squadra)    REFERENCES squadra(nome) ON UPDATE CASCADE ON DELETE CASCADE,
+    FOREIGN KEY(motore)     REFERENCES motore(nome) ON UPDATE CASCADE ON DELETE CASCADE,
+    FOREIGN KEY(pneumatico) REFERENCES pneumatico(nome) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 CREATE TABLE partecipante(
     codice_fiscale varchar(20),
-    vettura VARCHAR(60),
+    vettura varchar(60),
     numero_in_gara int NOT NULL,
     PRIMARY KEY(codice_fiscale,vettura),
-    FOREIGN KEY(codice_fiscale) REFERENCES pilota(codice_fiscale),
-    FOREIGN KEY(vettura)        REFERENCES autovettura(nome)
+    FOREIGN KEY(codice_fiscale) REFERENCES pilota(codice_fiscale)  ON UPDATE CASCADE ON DELETE CASCADE,
+    FOREIGN KEY(vettura)        REFERENCES autovettura(nome) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 CREATE TABLE prestazione(
     anno int,
     gara_num int,
     codice_fiscale varchar(20),
+    vettura varchar(40),
     tempo_q1 time,
     tempo_q2 time,
     tempo_q3 time,
     posizione_arrivo int NOT NULL,
     ritiro varchar(1) NOT NULL,
-    PRIMARY KEY(anno,gara_num,codice_fiscale),
-    FOREIGN KEY(anno)           REFERENCES gara(anno),
-    FOREIGN KEY(gara_num)       REFERENCES gara(gara_num),
-    FOREIGN KEY(codice_fiscale) REFERENCES partecipante(codice_fiscale)
+    PRIMARY KEY(anno,gara_num,vettura,codice_fiscale),
+    FOREIGN KEY(anno)           REFERENCES gara(anno) ON UPDATE CASCADE ON DELETE CASCADE,
+    FOREIGN KEY(gara_num)       REFERENCES gara(gara_num) ON UPDATE CASCADE ON DELETE CASCADE,
+    FOREIGN KEY(vettura)        REFERENCES autovettura(nome) ON UPDATE CASCADE ON DELETE CASCADE,
+    FOREIGN KEY(codice_fiscale) REFERENCES partecipante(codice_fiscale) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
-CREATE TABLE gara{
+CREATE TABLE gara(
     anno int,
     gara_num int,
     nome_gara varchar(60) NOT NULL,
@@ -93,10 +95,10 @@ CREATE TABLE gara{
     pilota_veloce varchar(20) NOT NULL,
     hot_lap time NOT NULL,
     PRIMARY KEY(anno,gara_num),
-    FOREIGN KEY(pilota_del_giorno) REFERENCES partecipante(codice_fiscale),
-    FOREIGN KEY(pilota_veloce) REFERENCES partecipante(codice_fiscale),
-    FOREIGN KEY(nome_gara) REFERENCES circuito(nome)
-};
+    FOREIGN KEY(pilota_del_giorno) REFERENCES partecipante(codice_fiscale) ON UPDATE CASCADE ON DELETE CASCADE,
+    FOREIGN KEY(pilota_veloce) REFERENCES partecipante(codice_fiscale) ON UPDATE CASCADE ON DELETE CASCADE,
+    FOREIGN KEY(nome_gara) REFERENCES circuito(nome) ON UPDATE CASCADE ON DELETE CASCADE
+);
 
 -- i punteggi, il punto bonus per giro veloce, la classifica e la composizione delle squadre in linea di massima penso che posso ricavarla.
 

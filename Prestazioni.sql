@@ -1,4 +1,4 @@
-INSERT INTO prestazione(anno,gara_num,codice_fiscale,tempo_q1,tempo_q2,tempo_q3,posizione_arrivo,ritiro) VALUES
+INSERT INTO prestazione(anno,gara_num,codice_fiscale,vettura,tempo_q1,tempo_q2,tempo_q3,posizione_arrivo,ritiro) VALUES
 (2022, 1,'LEHAMU85','Mercedes-AMG F1 W13 E Performance',    '1:32.285','1:31.048','1:31.238', 3,'N'),
 (2022, 1,'GERUMU98','Mercedes-AMG F1 W13 E Performance',    '1:32.269','1:31.252','1:32.216', 4,'N'),
 (2022, 1,'MAVEMN97','Red Bull RB18',                        '1:31.785','1:30.757','1:30.681',19,'Y'),
