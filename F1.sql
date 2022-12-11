@@ -1,4 +1,3 @@
--- da aggiungere le chiavi interne ed esterne e modificare eventuali parametri ridondanti
 DROP TABLE IF EXISTS circuito;
 DROP TABLE IF EXISTS squadra;
 DROP TABLE IF EXISTS pilota;
@@ -71,7 +70,7 @@ CREATE TABLE partecipante(
     FOREIGN KEY(vettura)        REFERENCES autovettura(nome)
 );
 
-CREATE TABLE prestazione( --entità DA AGGIUNGERE VETTURA :(
+CREATE TABLE prestazione(
     anno int,
     gara_num int,
     codice_fiscale varchar(20),
