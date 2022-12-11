@@ -111,3 +111,11 @@ values ('04:30.457');
         
 select * from scientist
 where tempo < '04:30.456';*/
+
+/*SELECT pilota.nome, pilota.cognome, prestazione.anno,prestazione.posizione_arrivo
+FROM pilota,partecipante,prestazione,gara,circuito
+WHERE prestazione.posizione_arrivo = 1 AND prestazione.anno = gara.anno AND prestazione.gara_num = gara.gara_num 
+		AND gara.nome_gara = circuito.nome AND circuito.nome = 'Sochi'
+		AND prestazione.codice_fiscale = partecipante.codice_fiscale AND prestazione.vettura = partecipante.vettura 
+		AND pilota.codice_fiscale = partecipante.codice_fiscale
+*/
