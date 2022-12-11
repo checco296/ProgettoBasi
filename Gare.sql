@@ -61,7 +61,7 @@ INSERT INTO gara(anno,gara_num,nome_gara,pilota_del_giorno,pilota_veloce,hot_lap
 (2020,14,'Istanbul',            'SEVEMD87','LANOMU99','1:36.806'),
 (2020,15,'Bahrain',             'ROGRMF86','MAVEMN97','1:32.014'),
 (2020,16,'Sakhiir',             'LEHAMU85','LEHAMU85','0:55.404'),
-(2020,17,'Yas Marina',          'MAVEMN97','DARIMA89','1:40.926'),
+(2020,17,'Yas Marina',          'MAVEMN97','DARIMA89','1:40.926');
 /*
 (2019, 1,'Melbourne'),
 (2019, 2,'Bahrain'),

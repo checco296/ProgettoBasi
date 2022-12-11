@@ -22,7 +22,7 @@ INSERT INTO partecipante(codice_fiscale,numero_in_gara,vettura) VALUES
 ('GERUMU98',  63,'Williams FW42'),
 
 ('MAVEMN97',   1,'Red Bull RB18'),
-('MAVEMN97',  33,'Red Bull RB17'),
+('MAVEMN97',  33,'Red Bull RB16B'),
 ('MAVEMN97',  33,'Red Bull RB16'),
 ('MAVEMN97',  33,'Red Bull RB15'),
 ('MAVEMN97',  33,'Red Bull RB14'),
@@ -31,7 +31,7 @@ INSERT INTO partecipante(codice_fiscale,numero_in_gara,vettura) VALUES
 ('MAVEMN97',  33,'Toro Rosso STR10'),
 
 ('SEPEMM90',  11,'Red Bull RB18'),
-('SEPEMM90',  11,'Red Bull RB17'),
+('SEPEMM90',  11,'Red Bull RB16B'),
 ('SEPEMM90',  11,'Racing Point RP20'),
 ('SEPEMM90',  11,'Racing Point RP19'),
 ('SEPEMM90',  11,'Force India VJM11'),

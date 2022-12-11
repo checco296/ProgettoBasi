@@ -212,7 +212,7 @@ INSERT INTO autovettura(anno,nome,squadra,motore,pneumatico) VALUES
 (2004,'BAR 006','BAR','Honda RA004E','Michelin'),
 (2004,'Ferrari F2004','Ferrari','Ferrari Tipo 053','Bridgestone'),
 (2004,'Jaguar R5','Jaguar','Cosworth CR-6','Michelin'),
-(2004,'Jordan EJ14','Jordan','Ford RS2','Bridgeston'),
+(2004,'Jordan EJ14','Jordan','Ford RS2','Bridgestone'),
 (2004,'McLaren MP4-19','McLaren','Mercedes-Benz FO 108Q','Michelin'),
 (2004,'Minardi PS04B','Minardi','Cosworth CR-6','Bridgestone'),
 (2004,'Renault R24','Renault','Renault RS24','Michelin'),
