@@ -6,3 +6,4 @@ L'obbiettivo è creare un database funzionante nel quale effetture delle quary a
  
  
 -Da riscrivere l'abstract una volta avuta la conferma che vada bene
+-Sistemare il diagramma er con le indicazioni di Sini
