@@ -95,7 +95,7 @@ CREATE TABLE prestazione(
     ritiro varchar(1)    NOT NULL,
     PRIMARY KEY(anno,gara_num,vettura,codice_fiscale),
     FOREIGN KEY(anno,gara_num)              REFERENCES gara(anno,gara_num)                  ON UPDATE CASCADE ON DELETE CASCADE,
-    FOREIGN KEY(vettura,codice_fiscale)     REFERENCES partecipante(vettura,codice_fiscale) ON UPDATE CASCADE ON DELETE CASCADE,
+    FOREIGN KEY(vettura,codice_fiscale)     REFERENCES partecipante(vettura,codice_fiscale) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 
