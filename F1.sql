@@ -97,24 +97,3 @@ CREATE TABLE prestazione(
     FOREIGN KEY(anno,gara_num)              REFERENCES gara(anno,gara_num)                  ON UPDATE CASCADE ON DELETE CASCADE,
     FOREIGN KEY(vettura,codice_fiscale)     REFERENCES partecipante(vettura,codice_fiscale) ON UPDATE CASCADE ON DELETE CASCADE
 );
-
-
-
--- i punteggi, il punto bonus per giro veloce, la classifica e la composizione delle squadre in linea di massima penso che posso ricavarla.
-
-/*drop table if exists "tempistiche";
-create table tempistiche (tempo time);
-
-insert into tempistiche(tempo)
-values ('04:30.457');
-        
-select * from scientist
-where tempo < '04:30.456';*/
-
-/*SELECT pilota.nome, pilota.cognome, prestazione.anno,prestazione.posizione_arrivo
-FROM pilota,partecipante,prestazione,gara,circuito
-WHERE prestazione.posizione_arrivo = 1 AND prestazione.anno = gara.anno AND prestazione.gara_num = gara.gara_num 
-		AND gara.nome_gara = circuito.nome AND circuito.nome = 'Sochi'
-		AND prestazione.codice_fiscale = partecipante.codice_fiscale AND prestazione.vettura = partecipante.vettura 
-		AND pilota.codice_fiscale = partecipante.codice_fiscale
-*/
