@@ -2,7 +2,7 @@
 #include <iostream>
 #include <fstream>
 #include "dependencies/include/libpq-fe.h"
-//#include "./funzioni.h"
+#include "./funzioni.h"
 
 #define PG_HOST     "127.0.0.1"
 #define PG_USER     "postgres"
@@ -15,6 +15,7 @@ int main(int argc, char **argv)
 {   
     bool log_in = false;
     int query;
+    bool input_corretto = false;
 
     char password[30];
     char conninfo [250];
@@ -54,39 +55,20 @@ int main(int argc, char **argv)
         cout << "\t[6] Da fare\n";
         cout << "\t[0] Esci\n";
         cout << endl << "La query selezionata e': ";
+        do{
         cin >> query;
+        if(query<0||query>6)
+        {
+            cout<<"inserire un numero compreso tra 0 e 6\n";
+            input_corretto = false;
+        }
+        else{input_corretto = true;}
+        }while(!input_corretto);
         cout<<"------------------------------------------------\n";
-        //log_in = queryExecution(conn, query);
+        log_in = eseguiquery(conn,query);
     }
     PQfinish(conn);
     return 0;
 }
 
 //g++ main.cpp -L dependencies\lib -lpq -o QueryExecutor.exe
-
-/*
-
-cout <<"Query 1\n";
-        PGresult *res;
-        res = PQexec(conn,"SELECT pilota.nome,pilota.cognome, COUNT(*) AS ritiri_stagionali FROM prestazione,partecipante,pilota WHERE prestazione.anno = 2022 AND prestazione.ritiro = 'Y' AND prestazione.codice_fiscale = partecipante.codice_fiscale AND prestazione.vettura = partecipante.vettura AND partecipante.codice_fiscale = pilota.codice_fiscale GROUP BY pilota.codice_fiscale HAVING COUNT(*) >= 5 ORDER BY ritiri_stagionali DESC;");
-        checkResults(res,conn);
-
-        int tuple = PQntuples(res);
-        int campi = PQnfields(res);
-
-        for(int i=0;i<campi;++i)
-        {
-            cout << PQfname(res,i)<<"\t\t\t";
-        }
-        cout <<endl;
-
-        for(int i = 0;i<tuple;++i)
-        {
-            for(int j=0;j<campi;++j)
-            {
-                cout<<PQgetvalue(res,i,j)<<"\t\t\t";
-            }
-            cout<<endl;
-        }
-
-*/

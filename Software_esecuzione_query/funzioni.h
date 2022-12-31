@@ -1,22 +1,9 @@
-/*
-bool checkQuery(PGconn *connection, std::string query); //vedere se serve
-
-bool checkIfIsValid(PGconn *connection, std::string select_value, std::string from_value, std::string value_to_find);//vedere se serve
-
-bool queryUno(PGconn *connection);
-
-bool queryDue(PGconn *connection);
-
-bool queryTre(PGconn *connection);
-
-bool queryQuattro(PGconn *connection);
-
-bool queryCinque(PGconn *connection);
-
-bool querySei(PGconn *connection);
-
-bool queryExecution(PGconn *connection, char operation);
-*/
+#include <cstdio>
+#include <iostream>
+#include <iomanip>
+#include <fstream>
+#include <string>
+using namespace std;
 
 void checkResults(PGresult* res,const PGconn* conn) //da cambiare nome
 {
@@ -33,16 +20,17 @@ void stampatuple(PGresult* res)
     int tuple = PQntuples(res);
     int campi = PQnfields(res);
 
+
     for(int i=0;i<campi;++i)
     {
-        cout << PQfname(res,i)<<"\t\t\t";
+        cout << left << setw(40) << PQfname(res,i);
     }
     cout<<endl;
     for(int i = 0;i<tuple;++i)
     {
         for(int j=0;j<campi;++j)
         {
-            cout<<PQgetvalue(res,i,j)<<"\t\t\t";
+            cout << left << setw(40) << PQgetvalue(res,i,j);
         }
         cout<<endl;
     }
@@ -50,12 +38,126 @@ void stampatuple(PGresult* res)
 
 void hotlap(PGconn* conn)
 {
-    char pista[30];
+    string pista;
+    string query = "SELECT circuito.nome,gara.anno,gara.hot_lap,pilota.nome,pilota.cognome,prestazione.vettura FROM circuito,gara,pilota,prestazione WHERE circuito.nome = $1 AND gara.nome_gara = circuito.nome AND gara.pilota_veloce = pilota.codice_fiscale AND gara.hot_lap = (SELECT MIN(gara.hot_lap) FROM gara WHERE gara.nome_gara = $1) AND gara.pilota_veloce = prestazione.codice_fiscale AND gara.anno = prestazione.anno AND gara.gara_num = prestazione.gara_num;";
     cout<<"Inserire il nome della pista: ";
     cin>>pista;
+    const char* parametro1 = pista.c_str();
 
-    cout <<"Query 1\n";
-        PGresult *res;
-        res = PQexec(conn,"SELECT pilota.nome,pilota.cognome, COUNT(*) AS ritiri_stagionali FROM prestazione,partecipante,pilota WHERE prestazione.anno = 2022 AND prestazione.ritiro = 'Y' AND prestazione.codice_fiscale = partecipante.codice_fiscale AND prestazione.vettura = partecipante.vettura AND partecipante.codice_fiscale = pilota.codice_fiscale GROUP BY pilota.codice_fiscale HAVING COUNT(*) >= 5 ORDER BY ritiri_stagionali DESC;");
-        checkResults(res,conn);
+    PGresult *res = PQprepare(conn,"hot_lap",query.c_str(),1,NULL);
+
+    res = PQexecPrepared(conn,"hot_lap",1,&parametro1,NULL,0,0);
+    checkResults(res,conn);
+    stampatuple(res);
+}
+
+void classifica(PGconn* conn)
+{
+    int anno;
+    int pil_cos;
+    cout<<"inserire l'anno di cui si vuole visualizzare la classifica: ";
+    cin>>anno;
+    string supp = to_string(anno);
+    const char* parametro1 = supp.c_str();
+    cout<<"0 per classifica piloti, 1 per classifica costruttori: ";
+    cin>>pil_cos;
+    string query_costruttori = "SELECT squadra.nome, SUM(punti_gara.punti) as punti_totali FROM(SELECT prestazione.codice_fiscale,prestazione.posizione_arrivo,CASE WHEN prestazione.posizione_arrivo = 1 THEN 25 WHEN prestazione.posizione_arrivo = 2 THEN 18 WHEN prestazione.posizione_arrivo = 3 THEN 15 WHEN prestazione.posizione_arrivo = 4 THEN 12 WHEN prestazione.posizione_arrivo = 5 THEN 10 WHEN prestazione.posizione_arrivo = 6 THEN 8 WHEN prestazione.posizione_arrivo = 7 THEN 6 WHEN prestazione.posizione_arrivo = 8 THEN 4 WHEN prestazione.posizione_arrivo = 9 THEN 2 WHEN prestazione.posizione_arrivo = 10 THEN 1 ELSE 0 END punti FROM prestazione WHERE prestazione.anno = $1::int ORDER BY prestazione.gara_num,prestazione.posizione_arrivo)AS punti_gara,pilota,partecipante,autovettura,squadra WHERE punti_gara.codice_fiscale = partecipante.codice_fiscale AND partecipante.vettura = autovettura.nome AND autovettura.anno = $1::int AND autovettura.squadra = squadra.nome AND partecipante.codice_fiscale = pilota.codice_fiscale GROUP BY squadra.nome ORDER BY punti_totali DESC;";
+    string query_piloti      = "SELECT pilota.nome,pilota.cognome, SUM(punti_gara.punti) as punti_totali FROM(SELECT prestazione.codice_fiscale,prestazione.posizione_arrivo,CASE WHEN prestazione.posizione_arrivo = 1 THEN 25 WHEN prestazione.posizione_arrivo = 2 THEN 18 WHEN prestazione.posizione_arrivo = 3 THEN 15 WHEN prestazione.posizione_arrivo = 4 THEN 12 WHEN prestazione.posizione_arrivo = 5 THEN 10 WHEN prestazione.posizione_arrivo = 6 THEN 8 WHEN prestazione.posizione_arrivo = 7 THEN 6 WHEN prestazione.posizione_arrivo = 8 THEN 4 WHEN prestazione.posizione_arrivo = 9 THEN 2 WHEN prestazione.posizione_arrivo = 10 THEN 1 ELSE 0 END punti FROM prestazione WHERE prestazione.anno = $1::int ORDER BY prestazione.gara_num,prestazione.posizione_arrivo)AS punti_gara,pilota,partecipante,autovettura WHERE punti_gara.codice_fiscale = partecipante.codice_fiscale AND partecipante.vettura = autovettura.nome AND autovettura.anno = $1::int AND partecipante.codice_fiscale = pilota.codice_fiscale GROUP BY pilota.codice_fiscale ORDER BY punti_totali DESC;";
+
+    PGresult* res;
+    if(pil_cos == 1)
+    {    
+        res = PQprepare(conn,"classifica_costruttori",query_costruttori.c_str(),1,NULL);
+        res = PQexecPrepared(conn,"classifica_costruttori",1,&parametro1,NULL,0,0);
+    }
+    else
+    {
+        res = PQprepare(conn,"classifica_piloti",query_piloti.c_str(),1,NULL);
+        res = PQexecPrepared(conn,"classifica_piloti",1,&parametro1,NULL,0,0);
+    }
+
+    checkResults(res,conn);
+    stampatuple(res);
+}
+
+void DNF(PGconn* conn)
+{
+    int anno;
+    int n_ritiri;
+    cout<<"inserire l'anno interessato: ";
+    cin>>anno;
+    string supp1 = to_string(anno);
+    const char* parametro1 = supp1.c_str();
+    cout<<"inserire il numero minimo di ritiri: ";
+    cin>>n_ritiri;
+    string supp2 = to_string(n_ritiri);
+    const char* parametro2 = supp2.c_str();
+    string query = "SELECT pilota.nome,pilota.cognome, COUNT(*) AS ritiri_stagionali FROM prestazione,partecipante,pilota WHERE prestazione.anno = $1::int AND prestazione.ritiro = 'Y' AND prestazione.codice_fiscale = partecipante.codice_fiscale AND prestazione.vettura = partecipante.vettura AND partecipante.codice_fiscale = pilota.codice_fiscale GROUP BY pilota.codice_fiscale HAVING COUNT(*) >= $2::int ORDER BY ritiri_stagionali DESC;";
+    PGresult* res = PQprepare(conn,"DNF",query.c_str(),2,NULL);
+
+    const char* parametri[2] = {parametro1,parametro2};
+    res = PQexecPrepared(conn,"DNF",2,parametri,NULL,0,0);
+    checkResults(res,conn);
+    stampatuple(res);
+}
+
+void info(PGconn*conn)
+{
+    cout<<"Selezionare un team da quelli sottostanti\n";
+    PGresult* res = PQexec(conn,"SELECT squadra.nome FROM squadra");
+    checkResults(res,conn);
+    stampatuple(res);
+    string squadra;
+    cout<<"inserire il nome: ";
+    cin>>squadra;
+    const char* parametro1 = squadra.c_str();
+
+    res = PQprepare(conn,"seleziona_anno","SELECT autovettura.anno AS anni_selezionabili FROM squadra,autovettura WHERE squadra.nome = autovettura.squadra AND squadra.nome = $1::varchar;",1,NULL);
+    res = PQexecPrepared(conn,"seleziona_anno",1,&parametro1,NULL,0,0);
+    checkResults(res,conn);
+    stampatuple(res);
+    int anno;
+    cout<<"inserire l'anno: ";
+    cin>>anno;
+    string supp = to_string(anno);
+    const char* parametro2 = supp.c_str();
+
+    string query = "SELECT autovettura.nome,autovettura.squadra,autovettura.motore,autovettura.pneumatico,pilota.nome,pilota.cognome FROM autovettura,partecipante,squadra,pilota WHERE squadra.nome = $1::varchar AND autovettura.squadra = squadra.nome AND autovettura.anno = $2::int AND partecipante.vettura = autovettura.nome AND partecipante.codice_fiscale = pilota.codice_fiscale;";
+    res = PQprepare(conn,"info1",query.c_str(),2,NULL);
+
+    const char* parametri[2] = {parametro1,parametro2};
+    res = PQexecPrepared(conn,"info1",2,parametri,NULL,0,0);
+    checkResults(res,conn);
+    stampatuple(res);
+
+    //continuare
+
+}
+
+bool eseguiquery(PGconn*conn,int query)
+{
+    switch (query)
+    {
+    case 1:
+        hotlap(conn);
+        return true;
+        break;
+    case 2:
+        classifica(conn);
+        return true;
+        break;
+    case 3:
+        DNF(conn);
+        return true;
+        break;
+    case 4:
+        info(conn);
+        return true;
+        break;
+    case 0:
+        return false;
+    default:
+        return false;
+        break;
+    }
 }
