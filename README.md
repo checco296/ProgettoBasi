@@ -6,7 +6,6 @@ L'obbiettivo è creare un database funzionante nel quale effetture delle quary a
  
  
 -Da riscrivere l'abstract una volta avuta la conferma che vada bene
--Inserire l'indice
 -se vuoi fai la query sulle info dei piloti e una invece che data un pilota dice quate pole, vittorie e ritiri
 -fare la relazione
 
