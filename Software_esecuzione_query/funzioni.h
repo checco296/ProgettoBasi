@@ -20,6 +20,11 @@ void stampatuple(PGresult* res)
     int tuple = PQntuples(res);
     int campi = PQnfields(res);
 
+    for(int i = 0;i<250;++i)
+    {
+        cout<<"=";
+    }
+    cout<<endl;
 
     for(int i=0;i<campi;++i)
     {
@@ -34,6 +39,11 @@ void stampatuple(PGresult* res)
         }
         cout<<endl;
     }
+    for(int i = 0;i<250;++i)
+    {
+        cout<<"=";
+    }
+    cout<<endl;
 }
 
 void hotlap(PGconn* conn)
@@ -130,8 +140,88 @@ void info(PGconn*conn)
     checkResults(res,conn);
     stampatuple(res);
 
-    //continuare
+    cout<<"Selezionare il campo del quale si vogliono maggiori informazioni:\n";
+    cout<<"[1] info squadra\n"<<"[2] info motore\n"<<"[3] info pneumatico\n"<<"[0]chiudi query\n";
+    cout<<"inserire il valore desiderato: ";
+    int menu;
+    bool input_corretto = false;
+    do{
+        cin>>menu;
+        if(menu<0||menu>3)
+        {
+            cout<<"inserire un input corretto tra 0 e 3: ";
+            input_corretto = false;
+        }
+        else
+            input_corretto = true;
+    }while(!input_corretto);
 
+    switch (menu)
+    {
+    case 1:
+        query = "SELECT squadra.* FROM squadra WHERE squadra.nome = $1::varchar;";
+        res = PQprepare(conn,"info_squadra",query.c_str(),1,NULL);
+        res = PQexecPrepared(conn,"info_squadra",1,&parametro1,NULL,0,0);
+        checkResults(res,conn);
+        stampatuple(res);
+        int select;
+        cout<<endl<<"premere 1 se si vuole visualizzare tutti i nomi precedenti del team se presenti :";
+        cin>>select;
+        if(select == 1)
+        {
+            query = "WITH RECURSIVE nomi AS (SELECT s1.nome, s1.nome_precedente FROM squadra s1 WHERE s1.nome = $1::varchar UNION ALL SELECT s2.nome, s2.nome_precedente FROM nomi JOIN squadra s2 ON nomi.nome_precedente = s2.nome)SELECT nomi.nome FROM nomi;";
+            res = PQprepare(conn,"info_ricorsiva",query.c_str(),1,NULL);
+            res = PQexecPrepared(conn,"info_ricorsiva",1,&parametro1,NULL,0,0);
+            checkResults(res,conn);
+            stampatuple(res);
+        }
+        break;
+    case 2:
+        query = "SELECT motore.* FROM motore,squadra,autovettura WHERE squadra.nome = $1::varchar AND autovettura.squadra = squadra.nome AND autovettura.anno = $2::int AND autovettura.motore = motore.nome;";
+        res = PQprepare(conn,"info_motore",query.c_str(),2,NULL);
+        res = PQexecPrepared(conn,"info_motore",2,parametri,NULL,0,0);
+        checkResults(res,conn);
+        stampatuple(res);
+        break;
+    case 3:
+        query = "SELECT pneumatico.* FROM pneumatico,autovettura,squadra WHERE squadra.nome = $1::varchar AND autovettura.squadra = squadra.nome AND autovettura.anno = $2::int AND autovettura.pneumatico = pneumatico.nome;";
+        res = PQprepare(conn,"info_pneumatico",query.c_str(),2,NULL);
+        res = PQexecPrepared(conn,"info_pneumatico",2,parametri,NULL,0,0);
+        checkResults(res,conn);
+        stampatuple(res);
+        break;
+    default:
+        break;
+    }
+    cout<<endl<<"chiusura menu info\n";
+}
+
+void qualifica(PGconn* conn)
+{
+    int anno;
+    cout<<"inserire l'anno interessato:(inserire gli anni tra 2022-2020 perchè gli altri non esisotno ancora...) ";
+    cin>>anno;
+    string supp1 = to_string(anno);
+    const char* parametro1 = supp1.c_str();
+
+    cout<<"selezionare il numero della gara della quale si vuoile sapere la griglia di partenza: \n";
+
+    string query = "SELECT gara.gara_num AS numero_gara,gara.nome_gara FROM gara WHERE gara.anno = $1::int;";
+    PGresult* res = PQprepare(conn,"calendario",query.c_str(),1,NULL);
+    res = PQexecPrepared(conn,"calendario",1,&parametro1,NULL,0,0);
+    checkResults(res,conn);
+    stampatuple(res);
+    int gara_num;
+    cout<<"inserire il numero: ";
+    cin>>gara_num;
+    string supp2 = to_string(gara_num);
+    const char* parametro2 = supp2.c_str();
+    const char* parametri[2] = {parametro1,parametro2};
+    query = "SELECT ROW_NUMBER() OVER (ORDER BY prestazione.tempo_q3,prestazione.tempo_q2,prestazione.tempo_q1) AS Posizione_Partenza,pilota.nome,pilota.cognome,pilota.sigla_in_gara,partecipante.numero_in_gara FROM pilota,partecipante,prestazione,autovettura WHERE prestazione.codice_fiscale = partecipante.codice_fiscale AND prestazione.vettura = prestazione.vettura AND partecipante.codice_fiscale = pilota.codice_fiscale AND prestazione.anno = $1::int AND prestazione.gara_num = $2::int AND autovettura.anno = $1::int AND partecipante.vettura = autovettura.nome;";
+    res = PQprepare(conn,"griglia",query.c_str(),2,NULL);
+    res = PQexecPrepared(conn,"griglia",2,parametri,NULL,0,0);
+    checkResults(res,conn);
+    stampatuple(res);
 }
 
 bool eseguiquery(PGconn*conn,int query)
@@ -152,6 +242,10 @@ bool eseguiquery(PGconn*conn,int query)
         break;
     case 4:
         info(conn);
+        return true;
+        break;
+    case 5:
+        qualifica(conn);
         return true;
         break;
     case 0:
