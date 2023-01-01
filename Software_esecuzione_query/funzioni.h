@@ -5,7 +5,7 @@
 #include <string>
 using namespace std;
 
-void checkResults(PGresult* res,const PGconn* conn) //da cambiare nome
+void checkResults(PGresult* res,const PGconn* conn)
 {
     if(PQresultStatus(res) != PGRES_TUPLES_OK)
     {
@@ -20,7 +20,7 @@ void stampatuple(PGresult* res)
     int tuple = PQntuples(res);
     int campi = PQnfields(res);
 
-    for(int i = 0;i<250;++i)
+    for(int i = 0;i<220;++i)
     {
         cout<<"=";
     }
@@ -39,7 +39,7 @@ void stampatuple(PGresult* res)
         }
         cout<<endl;
     }
-    for(int i = 0;i<250;++i)
+    for(int i = 0;i<220;++i)
     {
         cout<<"=";
     }
@@ -49,12 +49,17 @@ void stampatuple(PGresult* res)
 void hotlap(PGconn* conn)
 {
     string pista;
-    string query = "SELECT circuito.nome,gara.anno,gara.hot_lap,pilota.nome,pilota.cognome,prestazione.vettura FROM circuito,gara,pilota,prestazione WHERE circuito.nome = $1 AND gara.nome_gara = circuito.nome AND gara.pilota_veloce = pilota.codice_fiscale AND gara.hot_lap = (SELECT MIN(gara.hot_lap) FROM gara WHERE gara.nome_gara = $1) AND gara.pilota_veloce = prestazione.codice_fiscale AND gara.anno = prestazione.anno AND gara.gara_num = prestazione.gara_num;";
-    cout<<"Inserire il nome della pista: ";
+    cout<<"Inserire il nome della pista tra quelle presenti: ";
+    string query = "SELECT circuito.nome FROM circuito;";
+    PGresult* res = PQexec(conn,query.c_str());
+    checkResults(res,conn);
+    stampatuple(res);
+    cout<<"nome selezionato: ";
     cin>>pista;
+    query = "SELECT circuito.nome,gara.anno,gara.hot_lap,pilota.nome,pilota.cognome,prestazione.vettura FROM circuito,gara,pilota,prestazione WHERE circuito.nome = $1 AND gara.nome_gara = circuito.nome AND gara.pilota_veloce = pilota.codice_fiscale AND gara.hot_lap = (SELECT MIN(gara.hot_lap) FROM gara WHERE gara.nome_gara = $1) AND gara.pilota_veloce = prestazione.codice_fiscale AND gara.anno = prestazione.anno AND gara.gara_num = prestazione.gara_num;";
     const char* parametro1 = pista.c_str();
 
-    PGresult *res = PQprepare(conn,"hot_lap",query.c_str(),1,NULL);
+    res = PQprepare(conn,"hot_lap",query.c_str(),1,NULL);
 
     res = PQexecPrepared(conn,"hot_lap",1,&parametro1,NULL,0,0);
     checkResults(res,conn);

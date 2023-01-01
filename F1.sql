@@ -12,7 +12,7 @@ CREATE TABLE circuito(
     nome varchar(60),
     alias varchar(60)  NOT NULL,
     nazione varchar(2) NOT NULL,
-    lunghezza int      NOT NULL,
+    lunghezza float    NOT NULL,
     PRIMARY KEY(nome)
 );
 
@@ -38,7 +38,7 @@ CREATE TABLE pilota(
 CREATE TABLE motore(
     nome varchar(40),
     nazione varchar(2)    NOT NULL,
-    cilindrata int        NOT NULL,
+    cilindrata float      NOT NULL,
     tipologia VARCHAR(20) NOT NULL,
     PRIMARY KEY(nome)
 );

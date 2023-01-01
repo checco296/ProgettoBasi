@@ -1282,3 +1282,8 @@ INSERT INTO prestazione(anno,gara_num,codice_fiscale,vettura,tempo_q1,tempo_q2,t
 (2020,17,'ROGRMF86','Haas VF-20',                           '1:38.173',NULL      ,NULL      ,19,'N'),
 (2020,17,'GERUMU98','Williams FW43',                        '1:38.045',NULL      ,NULL      ,15,'N'),
 (2020,17,'NILAMC95','Williams FW43',                        '1:38.443',NULL      ,NULL      ,17,'N');
+
+
+create index "posizioni_arrivo" on prestazione (anno,gara_num,codice_fiscale,posizione_arrivo);
+
+//l'informazione più importante è il pilota che in una determinata gara ottiene un certo piazzamento per cui si indicizza così
