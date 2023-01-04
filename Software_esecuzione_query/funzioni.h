@@ -49,7 +49,7 @@ void stampatuple(PGresult* res)
 void hotlap(PGconn* conn)
 {
     string pista;
-    cout<<"Inserire il nome della pista tra quelle presenti: ";
+    cout<<"Inserire il nome della pista tra quelle presenti: \n";
     string query = "SELECT circuito.nome FROM circuito;";
     PGresult* res = PQexec(conn,query.c_str());
     checkResults(res,conn);
